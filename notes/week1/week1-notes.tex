@@ -1,0 +1,122 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\definecolor{titleblue}{HTML}{1F4E79}
+\definecolor{lightblue}{HTML}{EAF3F8}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Algorithms Study Plan}
+\rhead{Week 1 -- Day 3}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{15pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7em}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\color{titleblue}\textbf{Week 1 -- Day 3}}\\[0.3em]
+    {\LARGE\textbf{Exponents and Logarithms}}
+\end{center}
+
+\section*{Objective}
+
+Review exponents and logarithms and understand why algorithms that repeatedly divide their input by two usually have 
+logarithmic time complexity.
+
+\section*{Exponent Rules}
+For a nonzero base $a$, the main exponent rules are: 
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+    \item \textbf{Product rule:}
+    \[
+        a^m \cdot a^n = a^{m+n}
+    \]
+
+    \item \textbf{Quotient rule:}
+    \[
+        \frac{a^m}{a^n} = a^{m-n}
+    \]
+
+    \item \textbf{Power rule:}
+    \[
+        \left(a^m\right)^n = a^{mn}
+    \]
+
+    \item \textbf{Zero exponent:}
+    \[
+        a^0 = 1
+    \]
+    
+    \item \textbf{Negative exponent:}
+    \[
+        a^{-n} = \frac{1}{a^n}
+    \]
+
+\end{enumerate}
+
+\section*{What Does a Logarithm Represent?}
+
+A logarithm answers the following question:
+
+\begin{quote}
+    To what exponent must the base be raised to obtain a given number?
+\end{quote}
+
+In general, 
+
+\[
+    \log_b(x) = y \quad\Longleftrightarrow\quad b^y = x
+\]
+
+For example:
+
+\begin{itemize}[leftmargin=*]
+    \item $\log_2(8)=3$ because $2^3=8$.
+    \item $\log_2(32)=5$ because $2^5=32$.
+    \item $\log_2(1024)=10$ because $2^{10}=1024$
+\end{itemize}
+
+\section*{Connection with Binary Search}
+
+Starting with $32$ elements and repeatdly dividing the search space by two gives: 
+
+\[
+    32 \;\longrightarrow\; 16 \;\longrightarrow\; 8
+    \;\longrightarrow\; 4 \;\longrightarrow\; 2 \;\longrightarrow\; 1
+\]
+
+It takes five divisions to reach one element, and: 
+
+\[
+    \log_2(32)=5
+\]
+
+For $1024$ elements, it takes ten divisions because:
+
+\[
+    \log_2(1024)=10
+\]
+
+
+Binary Search discards approximately half of the remaining elements during every iterations. Therefore,
+the number of iterations grows logarithmically as the input grows.
+
+\begin{center}
+    \colorbox{lightblue}{\parbox{0.75\textwidth}{
+        \centering
+        \textbf{Time complexity:} \(O(\log n)\)
+    }}
+
+\end{center}
+
+\end{document}
